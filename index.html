@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jennifer</title>
+<style>
+  :root {
+    --bg-1: #fff0f4;
+    --bg-2: #ffe3ec;
+    --card-bg: #fffdfb;
+    --heart-1: #ff5f8f;
+    --heart-2: #e0356e;
+    --heart-glow: #ffb3c9;
+    --petal-1: #fff59d;
+    --petal-2: #ffd54f;
+    --petal-3: #ffb300;
+    --center-1: #ffcc80;
+    --center-2: #ff8f3d;
+    --leaf-1: #9ccc65;
+    --leaf-2: #689f38;
+    --text: #8a3b58;
+    --sparkle: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg-1: #1c0e18;
+      --bg-2: #2c1424;
+      --card-bg: #2a1420;
+      --heart-1: #ff7fa3;
+      --heart-2: #d94577;
+      --heart-glow: #ff9bb8;
+      --petal-1: #fff2a8;
+      --petal-2: #ffd54f;
+      --petal-3: #ffb300;
+      --center-1: #ffcc80;
+      --center-2: #ff8f3d;
+      --leaf-1: #aed581;
+      --leaf-2: #7cb342;
+      --text: #ffe1ec;
+      --sparkle: #ffffff;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg-1: #1c0e18;
+    --bg-2: #2c1424;
+    --card-bg: #2a1420;
+    --heart-1: #ff7fa3;
+    --heart-2: #d94577;
+    --heart-glow: #ff9bb8;
+    --petal-1: #fff2a8;
+    --petal-2: #ffd54f;
+    --petal-3: #ffb300;
+    --center-1: #ffcc80;
+    --center-2: #ff8f3d;
+    --leaf-1: #aed581;
+    --leaf-2: #7cb342;
+    --text: #ffe1ec;
+    --sparkle: #ffffff;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at 50% 20%, var(--bg-2), var(--bg-1) 70%);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    padding: 24px;
+    overflow-x: auto;
+    position: relative;
+  }
+
+  .card {
+    background: var(--card-bg);
+    border-radius: 32px;
+    padding: 40px clamp(20px, 6vw, 56px);
+    max-width: 460px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(200, 60, 110, 0.25), 0 4px 12px rgba(0,0,0,0.08);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 15% 15%, rgba(255,213,79,0.15), transparent 40%),
+      radial-gradient(circle at 85% 85%, rgba(255,95,143,0.15), transparent 40%);
+    pointer-events: none;
+  }
+
+  .art-wrap {
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .petal {
+    animation: sway 4s ease-in-out infinite;
+    transform-origin: 150px 150px;
+  }
+
+  @keyframes sway {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(1.5deg) scale(1.02); }
+  }
+
+  .heart {
+    animation: pulse 2.4s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.035); }
+  }
+
+  .name {
+    font-family: 'Brush Script MT', 'Segoe Script', cursive;
+    font-size: 34px;
+    fill: var(--text);
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.15));
+  }
+
+  .caption {
+    margin-top: 22px;
+    color: var(--text);
+    font-size: 17px;
+    line-height: 1.5;
+    font-style: italic;
+    letter-spacing: 0.3px;
+  }
+
+  .sparkle {
+    animation: twinkle 2.2s ease-in-out infinite;
+    transform-origin: center;
+  }
+  .sparkle:nth-child(2) { animation-delay: .5s; }
+  .sparkle:nth-child(3) { animation-delay: 1.1s; }
+  .sparkle:nth-child(4) { animation-delay: 1.6s; }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.15; transform: scale(0.6); }
+    50% { opacity: 1; transform: scale(1.15); }
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="art-wrap">
+      <svg viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="heartGrad" cx="50%" cy="35%" r="70%">
+            <stop offset="0%" stop-color="var(--heart-1)"/>
+            <stop offset="100%" stop-color="var(--heart-2)"/>
+          </radialGradient>
+          <radialGradient id="petalGrad" cx="35%" cy="35%" r="75%">
+            <stop offset="0%" stop-color="var(--petal-1)"/>
+            <stop offset="100%" stop-color="var(--petal-2)"/>
+          </radialGradient>
+          <radialGradient id="petalGradDark" cx="35%" cy="35%" r="75%">
+            <stop offset="0%" stop-color="var(--petal-2)"/>
+            <stop offset="100%" stop-color="var(--petal-3)"/>
+          </radialGradient>
+          <radialGradient id="centerGrad" cx="40%" cy="35%" r="70%">
+            <stop offset="0%" stop-color="var(--center-1)"/>
+            <stop offset="100%" stop-color="var(--center-2)"/>
+          </radialGradient>
+          <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="var(--leaf-1)"/>
+            <stop offset="100%" stop-color="var(--leaf-2)"/>
+          </linearGradient>
+          <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="8" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+
+        <!-- glow behind heart -->
+        <ellipse cx="150" cy="220" rx="110" ry="100" fill="var(--heart-glow)" opacity="0.35" filter="url(#softGlow)"/>
+
+        <!-- stem and leaves -->
+        <path d="M150 320 L150 210" stroke="url(#leafGrad)" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path d="M150 280 C 118 268, 96 284, 86 302 C 113 302, 136 296, 150 280 Z" fill="url(#leafGrad)"/>
+        <path d="M150 258 C 182 247, 204 264, 214 282 C 187 282, 165 276, 150 258 Z" fill="url(#leafGrad)"/>
+
+        <!-- heart behind the flower -->
+        <path class="heart" d="M150 205
+                 C 150 175, 110 155, 85 178
+                 C 62 198, 65 235, 100 262
+                 C 118 276, 138 288, 150 300
+                 C 162 288, 182 276, 200 262
+                 C 235 235, 238 198, 215 178
+                 C 190 155, 150 175, 150 205 Z"
+              fill="url(#heartGrad)"/>
+        <path d="M150 205
+                 C 150 175, 110 155, 85 178
+                 C 62 198, 65 235, 100 262
+                 C 118 276, 138 288, 150 300
+                 C 162 288, 182 276, 200 262
+                 C 235 235, 238 198, 215 178
+                 C 190 155, 150 175, 150 205 Z"
+              fill="none" stroke="var(--sparkle)" stroke-width="1.5" opacity="0.3"/>
+
+        <!-- yellow flower on top -->
+        <g class="petal" filter="url(#softGlow)">
+          <ellipse cx="150" cy="118" rx="27" ry="43" fill="url(#petalGrad)"/>
+          <ellipse cx="150" cy="182" rx="27" ry="43" fill="url(#petalGrad)"/>
+          <ellipse cx="85"  cy="150" rx="43" ry="27" fill="url(#petalGrad)"/>
+          <ellipse cx="215" cy="150" rx="43" ry="27" fill="url(#petalGrad)"/>
+          <ellipse cx="104" cy="104" rx="31" ry="25" fill="url(#petalGradDark)" transform="rotate(-45 104 104)"/>
+          <ellipse cx="196" cy="104" rx="31" ry="25" fill="url(#petalGradDark)" transform="rotate(45 196 104)"/>
+          <ellipse cx="104" cy="196" rx="31" ry="25" fill="url(#petalGradDark)" transform="rotate(45 104 196)"/>
+          <ellipse cx="196" cy="196" rx="31" ry="25" fill="url(#petalGradDark)" transform="rotate(-45 196 196)"/>
+          <circle cx="150" cy="150" r="31" fill="url(#centerGrad)"/>
+          <circle cx="150" cy="150" r="31" fill="none" stroke="var(--petal-3)" stroke-width="1.5" opacity="0.4"/>
+          <!-- little texture dots in the center -->
+          <circle cx="140" cy="142" r="2" fill="var(--petal-3)" opacity="0.6"/>
+          <circle cx="160" cy="144" r="2" fill="var(--petal-3)" opacity="0.6"/>
+          <circle cx="150" cy="158" r="2" fill="var(--petal-3)" opacity="0.6"/>
+          <circle cx="138" cy="156" r="1.6" fill="var(--petal-3)" opacity="0.5"/>
+          <circle cx="162" cy="158" r="1.6" fill="var(--petal-3)" opacity="0.5"/>
+        </g>
+
+        <!-- sparkles -->
+        <g fill="var(--sparkle)">
+          <path class="sparkle" d="M60 90 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4 Z" opacity="0.8"/>
+          <path class="sparkle" d="M240 80 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3 Z" opacity="0.8"/>
+          <path class="sparkle" d="M55 230 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3 Z" opacity="0.7"/>
+          <path class="sparkle" d="M245 235 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4 Z" opacity="0.7"/>
+        </g>
+
+        <!-- name -->
+        <text x="150" y="248" text-anchor="middle" class="name">Jennifer</text>
+      </svg>
+    </div>
+    <div class="caption">Eres lo mejor de mi vida, gracias 💛</div>
+  </div>
+</body>
+</html>
